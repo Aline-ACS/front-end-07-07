@@ -17,7 +17,7 @@ class User{
     }
 
     getUsers(){
-        axios.get(`http://localhost:3000/users`)
+        axios.get(`http://localhost:4000/users`)
             .then((response) => {
                this.recoveryUser(response.data.users)
             })
@@ -29,14 +29,16 @@ class User{
     recoveryUser(data) {
         for(user of data) {
             const html = this.layoutUser(user.name, user.email, user.age, user.phone, user.id);
-
             document.getElementById('usersBoard').innerHTML += html;
-        } 
+        }
         
         document.querySelectorAll('.deleteUser').forEach(button => {
             button.onclick = event => this.deleteUser(button.id);
         })
-        
+
+        document.querySelectorAll('.getUser').forEach(button => {
+            button.onclick = event => this.getUserModal(button.id);
+        }) 
     }
 
     layoutUser(name, email, age, phone,id) {
@@ -49,11 +51,12 @@ class User{
                          <p class="userAge">${age}</p>
                          <p class="userPhone">${phone}</p>
                          <button type="button" class="btn btn-danger deleteUser" id="${id}">Excluir</button>
+                         <button type="button" class="btn btn-outline-primary getUser" id="${id}" data-toggle="modal" data-target="#exampleModalEdit">Editar</button>
                     </div>
+                    
                  </div>
              </div>
-        `;
-
+        `; 
     }
 
     userValidate(event) {
@@ -76,7 +79,7 @@ class User{
     }
 
     createUser(user) {
-        axios.post(`http://localhost:3000/users`, user)
+        axios.post(`http://localhost:4000/users`, user)
         .then((response) => {
             const html = this.layoutUser(user.name, user.email, user.age, user.phone);
             this.insertHtml(html);
@@ -87,23 +90,30 @@ class User{
     }
 
     deleteUser(id) {
-        axios.delete(`http://localhost:3000/users/${id}`, user)
+        axios.delete(`http://localhost:4000/users/${id}`)
         .then((result) => {
             alert(result.data.result)
         })
         .catch((error) => {
             console.log(error)
         })
+    } 
+
+    getUserModal(id) {
+        axios.get(`http://localhost:4000/users/${id}`)
+        .then((response) => {
+            
+            document.getElementById('txtNameModal').value = response.data.user[0].name;
+            document.getElementById('txtAgeModal').value = response.data.user[0].age;
+            document.getElementById('txtPhoneModal').value = response.data.user[0].phone;
+            document.getElementById('txtEmailModal').value = response.data.user[0].email;
+            console.log(response.data);          
+        })
+        .catch((error) => {
+            console.log(error); 
+        })
     }
-
-    
-
-
-
-
-
-
 
 }
 
-new User();
+new User(); 

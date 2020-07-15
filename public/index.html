@@ -4,15 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- <link rel="stylesheet" href="./style.css"> -->
+    <title> Front End com Delete</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
 
 <body>
     <nav class="navbar navbar-dark bg-dark mb-5">
-        <span class="navbar-brand mb-0 h1">Cadastro de Usuario</span>
+        <span class="navbar-brand mb-0 h1">Cadastro de Usuário</span>
     </nav>
 
     <div class="container">
@@ -44,6 +43,7 @@
             </div>
         </div>
         <div class="row mt-5 mb-5" id="usersBoard">
+
         </div>
     </div>
     <script src="./bundle.js"></script>
@@ -53,6 +53,41 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
+    
+        <div class="modal fade" id="exampleModalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Editar usuário</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="txtNameModal" class="col-form-label">Nome:</label>
+                            <input type="text" class="form-control" id="txtNameModal">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtEmailModal" class="col-form-label">Email:</label>
+                            <input type="text" class="form-control" id="txtEmailModal">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtAgeModal" class="col-form-label">Idade:</label>
+                            <input type="number" class="form-control" id="txtAgeModal">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtPhoneModal" class="col-form-label">Telefone:</label>
+                            <input type="text" class="form-control" id="txtPhoneModal">
+                        </div>
+                    </form>
+                    </div>
+                    <div class="modal-footer"> 
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="button" class="btn btn-primary">Enviar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 </body>
-
-</html>
